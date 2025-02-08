@@ -12,14 +12,6 @@ import (
 
 type DummyStakeService struct{}
 
-func (d *DummyStakeService) Stake(walletAddress string, amount float64) error {
-	return nil
-}
-
-func (d *DummyStakeService) GetRewards(walletAddress string) (float64, error) {
-	return 5.0, nil
-}
-
 func TestStakeHandler_Success(t *testing.T) {
 	dummySvc := &DummyStakeService{}
 	handler := v1.StakeHandler(dummySvc)
