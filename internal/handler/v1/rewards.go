@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/devlongs/internal/service"
+	"github.com/devlongs/staking-service/internal/service"
 	"github.com/go-chi/chi/v5"
 )
 
