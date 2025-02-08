@@ -14,6 +14,7 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/devlongs/staking-service/internal/database"
+	v1 "github.com/devlongs/staking-service/internal/handler/v1"
 	"github.com/devlongs/staking-service/internal/service"
 	"github.com/devlongs/staking-service/internal/store"
 )
