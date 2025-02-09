@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stakeway-backend
+  labels:
+    app: stakeway-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: stakeway-backend
+  template:
+    metadata:
+      labels:
+        app: stakeway-backend
+    spec:
+      containers:
+      - name: stakeway-backend
+        image: devlongs/stakeway-backend:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: stakeway-config
