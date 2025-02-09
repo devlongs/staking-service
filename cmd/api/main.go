@@ -15,6 +15,7 @@ import (
 
 	"github.com/devlongs/staking-service/internal/database"
 	v1 "github.com/devlongs/staking-service/internal/handler/v1"
+	"github.com/devlongs/staking-service/internal/metrics"
 	"github.com/devlongs/staking-service/internal/service"
 	"github.com/devlongs/staking-service/internal/store"
 )
@@ -39,6 +40,8 @@ func (app *application) mount() http.Handler {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
+	// This records metrics for each HTTP request
+	r.Use(metrics.InstrumentationMiddleware)
 
 	// API v1 endpoints
 	r.Route("/v1", func(r chi.Router) {
@@ -46,6 +49,9 @@ func (app *application) mount() http.Handler {
 		r.Post("/stake", v1.StakeHandler(app.svc))
 		r.Get("/rewards/{wallet_address}", v1.RewardsHandler(app.svc))
 	})
+
+	// Expose /metrics endpoint for Prometheus scraping
+	r.Handle("/metrics", metrics.MetricsHandler())
 
 	return r
 }
