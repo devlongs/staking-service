@@ -1,0 +1,11 @@
+groups:
+- name: stakeway_alerts
+  rules:
+  - alert: StakewayServiceDown
+    expr: up{job="stakeway-backend"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Stakeway service is down"
+      description: "No endpoints are being scraped for the Stakeway service for more than 1 minute."
