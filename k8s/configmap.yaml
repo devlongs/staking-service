@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stakeway-config
+data:
+  ADDR: ":8080"
+  DB_PATH: "stakeway.db"
