@@ -1,7 +1,5 @@
 # Staking Service
 
-This repository contains the implementation for the Stakeway Technical Assessment.
-
 - **Section 1: Backend API** – A lightweight Go backend that manages staking operations using SQLite. It provides endpoints for health, staking, and rewards. This section features dependency injection, structured logging, graceful shutdown, unit testing, and containerization.  
   **(Section 1 is available on the master branch.)**
   
